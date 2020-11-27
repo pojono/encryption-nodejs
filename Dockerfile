@@ -5,5 +5,6 @@ COPY package.json .
 RUN yarn
 COPY . .
 RUN tsc
+RUN mkdir files
 CMD node ./dist/app.js
 
