@@ -13,7 +13,9 @@ const writeFile = util.promisify(fs.writeFile);
 setPassword(Buffer.from('f8647d5417039b42c88a75897109049378cdfce528a7e015656bd23cd18fb78a', 'hex'));
 
 const app = express();
-app.use(fileUpload());
+app.use(fileUpload({
+    uploadTimeout: 0,
+}));
 app.get('/raw/:id', (req: any, res: any) => {
     const file = path.join(__dirname, '..', './files/',req.params.id);
     const readStream = fs.createReadStream(file);
