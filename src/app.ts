@@ -17,14 +17,22 @@ app.use(fileUpload({
     uploadTimeout: 0,
 }));
 app.get('/raw/:id', (req: any, res: any) => {
-    const file = path.join(__dirname, '..', './files/',req.params.id);
-    const readStream = fs.createReadStream(file);
-    readStream.pipe(res);
+    try {
+        const file = path.join(__dirname, '..', './files/',req.params.id);
+        const readStream = fs.createReadStream(file);
+        readStream.pipe(res);
+    } catch (err) {
+        res.json(err);
+    }
 });
 app.get('/aes/:id', (req: any, res: any) => {
-    const file = path.join(__dirname, '..', './files/',req.params.id);
-    const readStream = fs.createReadStream(file);
-    readStream.pipe(createDecryptStream(res));
+    try {
+        const file = path.join(__dirname, '..', './files/',req.params.id);
+        const readStream = fs.createReadStream(file);
+        readStream.pipe(createDecryptStream(res));
+    } catch (err) {
+        res.json(err);
+    }
 });
 app.post("/upload", async (req: Request, res: Response) => {
     if (!req.files || !checkFile(req.files)) {
