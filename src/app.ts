@@ -19,7 +19,7 @@ app.use(fileUpload({
 app.get('/raw/:id', (req: any, res: any) => {
     const file = path.join(__dirname, '..', './files/',req.params.id);
     const readStream = fs.createReadStream(file);
-    readStream.pipe(createDecryptStream(res));
+    readStream.pipe(res);
 });
 app.get('/aes/:id', (req: any, res: any) => {
     const file = path.join(__dirname, '..', './files/',req.params.id);
