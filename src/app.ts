@@ -30,8 +30,12 @@ app.post("/upload", async (req: Request, res: Response) => {
     if (!req.files || !checkFile(req.files)) {
         return res.status(400).end("Please upload correct file");
     }
-    const file: UploadedFile = req.files.file as UploadedFile;
-    await writeFile('./files/' + file.name, file.data);
+    try {
+        const file: UploadedFile = req.files.file as UploadedFile;
+        await writeFile('./files/' + file.name, file.data);
+    } catch (err) {
+        console.log(err);
+    }
     res.json({ result: 'ok'});
 });
 app.listen(3000);
