@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+import fileUpload from 'express-fileupload';
 import { Transform, Stream, Writable } from 'stream';
 
 const algorithm = 'aes-256-ctr';
@@ -13,6 +14,11 @@ function checkPassword() {
 export function generatePassword() {
     return crypto.randomBytes(32);
 }
+
+// Checks if the file exists
+export const checkFile = (files: fileUpload.FileArray | undefined): boolean => {
+    return !(!files || !files.file);
+};
 
 /**
  * set password for encrypting & decryption

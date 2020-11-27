@@ -1,4 +1,3 @@
-
-yarn add typescript @types/node
-
-npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
+docker build -t encryption .
+docker run -d -p 3000:3000 --name encryption encryption 
+docker exec -it encryption sh
