@@ -1,9 +1,10 @@
 Проект для проверки поточного шифрования
 
-
+Склонировать проект:
+```
 git clone https://github.com/pojono/encryption-nodejs.git
-
 cd encryption-nodejs
+```
 
 docker build -t encryption .
 
