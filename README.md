@@ -1,3 +1,5 @@
+Проект для проверки поточного шифрования
+
 
 git clone https://github.com/pojono/encryption-nodejs.git
 
