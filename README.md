@@ -10,6 +10,9 @@ cd encryption-nodejs
 docker build -t encryption .
 ```
 
+Запуск Docker образа:
+```
 docker run -d -p 3000:3000 --name encryption encryption 
+```
 
 docker exec -it encryption sh
