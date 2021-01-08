@@ -17,4 +17,6 @@ docker run -d -p 3000:3000 --name encryption encryption
 
 Заглянуть внутрь Docker контейнера:
 
+```
 docker exec -it encryption sh
+```
